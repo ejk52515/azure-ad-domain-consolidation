@@ -1,0 +1,40 @@
+﻿# Terraform working directory and state
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+
+# Private Terraform variables and environment files
+terraform.tfvars
+*.auto.tfvars
+.env
+.env.*
+
+# Terraform and application logs
+*.log
+crash.log
+crash.*.log
+
+# Credentials, certificates, and migration key material
+*.pes
+*.key
+*.pem
+*.pfx
+*.p12
+
+# Downloaded installers and binaries
+*.exe
+*.msi
+
+# Remote Desktop connection files
+*.rdp
+
+# Local evidence and exported artifacts
+evidence/*
+!evidence/.gitkeep
+
+# Local editor and operating-system files
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
