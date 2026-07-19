@@ -1,0 +1,20 @@
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "eastus"
+
+resource_group_name = "rg-ad-consolidation"
+
+# Replace this example with the administrator's current public IPv4
+# address followed by /32 in the private terraform.tfvars file.
+my_ip_cidr = "203.0.113.10/32"
+
+# Validated against East US regional quota, Famsv7 family quota,
+# SKU restrictions, Trusted Launch, and NVMe capabilities.
+target_dc_size = "Standard_F1ams_v7"
+source_dc_size = "Standard_F1ams_v7"
+migsync_size   = "Standard_F2ams_v7"
+
+# Interpreted using "Central Standard Time" in the shutdown resources.
+shutdown_time = "2300"
+
+# Do not place admin_password in this file.
+# Supply it through the TF_VAR_admin_password environment variable.
