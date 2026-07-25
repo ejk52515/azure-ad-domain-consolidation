@@ -411,16 +411,26 @@ Subscription IDs are identifiers rather than passwords, but public copies should
 
 ## Cleanup status
 
-At the time of this README snapshot:
+The Azure environment was removed after technical validation, evidence collection, and the Part 5 Loom recording were complete.
 
-- Technical validation is complete.
-- Part 5 Loom recording is complete.
-- All three auto-shutdown schedules were temporarily disabled and preserved.
-- Final Azure deallocation and resource deletion are pending the repository commit.
-- The private evidence set remains local.
-- The public repository will contain only curated evidence.
+Final cleanup included:
 
-After teardown, update this section with the deletion result and final cost-stop verification.
+- Disabled and preserved the three 11:00 PM auto-shutdown schedules before teardown.
+- Used `terraform destroy` to remove Terraform-managed infrastructure.
+- Preserved Terraform's resource-group deletion protection.
+- Identified and manually removed four resources created outside Terraform:
+  - Two pre-ADMT managed-disk snapshots
+  - One Azure Monitor metric alert
+  - One Azure Monitor action group
+- Reran `terraform destroy`.
+- Deleted `rg-ad-consolidation`.
+- Preserved the local project, Terraform configuration, README, screenshots, and private evidence.
+- Deleted no Azure subscription or unrelated resource group.
+
+Final Terraform result:
+
+```text
+Destroy complete! Resources: 1 destroyed.
 
 ## Portfolio summary
 
