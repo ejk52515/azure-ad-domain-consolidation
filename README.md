@@ -426,5 +426,4 @@ After teardown, update this section with the deletion result and final cost-stop
 
 > Built and validated an enterprise-pattern cross-forest Active Directory consolidation pilot in Azure. Deployed the infrastructure with Terraform, configured separate source and target forests, conditional DNS forwarding, a two-way trust, discovery and conflict mapping, ADMT/PES user and group migration, password continuity, AGDLP-style access transition, target-domain Group Policy, and target-forest synchronization to Microsoft Entra ID. Added Azure Monitor, Azure Policy, Cost Management, change documentation, and SHA-256 evidence validation.
 
-## Scope disclaimer
 
