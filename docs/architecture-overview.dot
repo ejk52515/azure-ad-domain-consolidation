@@ -1,0 +1,46 @@
+
+digraph G {
+  graph [rankdir=LR, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.8",
+         fontname="Arial", label="Azure Cross-Forest Active Directory Consolidation Architecture",
+         labelloc="t", fontsize=22];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11, color="#5B6573"];
+  edge [fontname="Arial", fontsize=10, color="#4A5568", arrowsize=0.8];
+
+  admin [label="Administrator Workstation\nAzure CLI • Terraform • RDP", fillcolor="#EAF3FF"];
+  entra [label="Microsoft Entra ID\n3 pilot users\nPassword Hash Synchronization", fillcolor="#EEE9FF"];
+
+  subgraph cluster_vnet {
+    label="Azure VNet: vnet-ad-consolidation (East US)";
+    style="rounded,dashed";
+    color="#3B82F6";
+    fontname="Arial";
+    fontsize=15;
+
+    subgraph cluster_target {
+      label="Target subnet — 10.20.10.0/24";
+      style="rounded";
+      color="#60A5FA";
+      tgt [label="TGT-DC01\n10.20.10.4\ncorp.lab\nAD DS • DNS • PDC", fillcolor="#DBEAFE"];
+    }
+
+    subgraph cluster_source {
+      label="Source subnet — 10.20.20.0/24";
+      style="rounded";
+      color="#34D399";
+      src [label="SRC-DC01\n10.20.20.4\nacquired.lab\nAD DS • DNS", fillcolor="#D1FAE5"];
+    }
+
+    subgraph cluster_mgmt {
+      label="Management subnet — 10.20.30.0/24";
+      style="rounded";
+      color="#F59E0B";
+      mig [label="MIGSYNC01\n10.20.30.10\nRSAT • SQL Express • ADMT/PES\nMicrosoft Entra Connect • Evidence", fillcolor="#FEF3C7"];
+    }
+  }
+
+  admin -> mig [label="Restricted RDP\nOnly public IP in lab", color="#2563EB", penwidth=1.8];
+  tgt -> src [dir=both, label="Two-way forest trust\nConditional DNS forwarding", color="#7C3AED", penwidth=1.8];
+  mig -> src [label="Discovery • ADMT/PES\nSource validation", color="#059669"];
+  mig -> tgt [label="Target administration\nMigration landing zone", color="#2563EB"];
+  mig -> entra [label="Pilot OU sync\nPHS + source anchors", color="#7C3AED", penwidth=1.8];
+}

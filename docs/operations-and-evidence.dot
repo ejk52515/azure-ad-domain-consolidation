@@ -1,0 +1,28 @@
+
+digraph G {
+  graph [rankdir=LR, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.8",
+         fontname="Arial", label="Operational Controls and Evidence Validation",
+         labelloc="t", fontsize=22];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=10.5, color="#5B6573"];
+  edge [fontname="Arial", fontsize=9.5, color="#4A5568", arrowsize=0.75];
+
+  rg [label="rg-ad-consolidation\n3 VMs • 20 Terraform resources", fillcolor="#EAF3FF"];
+  monitor [label="Azure Monitor\nHigh-CPU Sev2 alert\nFired and auto-resolved", fillcolor="#FEE2E2"];
+  action [label="Action Group\nEmail notification path", fillcolor="#FDE68A"];
+  policy [label="Azure Policy\nAuditIfNotExists\nVM backup audit", fillcolor="#D1FAE5"];
+  cost [label="Cost Management\n$35.41 observed cost\n$50 monthly budget", fillcolor="#DBEAFE"];
+  docs [label="Operational Documentation\nChange request • PIR\nStakeholder update", fillcolor="#EEE9FF"];
+  evidence [label="Evidence Consolidation\n91 source = 91 destination\n0 hash mismatches", fillcolor="#EDE9FE"];
+  inventory [label="Final SHA-256 Inventory\n103 files • 0 missing hashes\nPublication review queue", fillcolor="#D1FAE5"];
+
+  rg -> monitor;
+  monitor -> action;
+  rg -> policy;
+  rg -> cost;
+  rg -> docs;
+  docs -> evidence;
+  monitor -> evidence;
+  policy -> evidence;
+  cost -> evidence;
+  evidence -> inventory;
+}

@@ -1,0 +1,19 @@
+
+digraph G {
+  graph [rankdir=LR, bgcolor="white", pad="0.25", nodesep="0.35", ranksep="0.7",
+         fontname="Arial", label="Identity Migration and Hybrid Synchronization Flow",
+         labelloc="t", fontsize=22];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=10.5, color="#5B6573"];
+  edge [fontname="Arial", fontsize=9.5, color="#4A5568", arrowsize=0.75];
+
+  discover [label="1. Discovery\nInventory source and target\nusers and groups", fillcolor="#EAF3FF"];
+  conflict [label="2. Conflict Mapping\nExisting target jcarter retained\nMigrated identity renamed jcarter-acq", fillcolor="#FEE2E2"];
+  groups [label="3. Group Migration\nGG-Finance\nGG-IT", fillcolor="#D1FAE5"];
+  users [label="4. User + Password Migration\ndlee • jcarter-acq • mallen\nADMT + PES", fillcolor="#D1FAE5"];
+  access [label="5. Access Transition\nAGDLP-style nesting\nFinance allowed / non-Finance denied", fillcolor="#FEF3C7"];
+  gpo [label="6. Target Controls\nTarget-domain GPO\nSecurity group auditing", fillcolor="#FEF3C7"];
+  sync [label="7. Microsoft Entra Connect\nPilot OU only\nPHS • mS-DS-ConsistencyGuid", fillcolor="#EEE9FF"];
+  cloud [label="8. Cloud Validation\nExactly 3 synchronized users\nSuccessful dlee sign-in", fillcolor="#EDE9FE"];
+
+  discover -> conflict -> groups -> users -> access -> gpo -> sync -> cloud;
+}

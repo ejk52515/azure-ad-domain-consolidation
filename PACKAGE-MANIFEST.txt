@@ -1,0 +1,13 @@
+README package created successfully.
+
+Files:
+- README.md
+- docs/architecture-overview.svg and .png
+- docs/migration-flow.svg and .png
+- docs/operations-and-evidence.svg and .png
+- docs/screenshot-map.md
+- docs/push-to-github.md
+- screenshots/ (22 curated images)
+- scripts/install-readme-package.ps1
+
+Missing source screenshots: None
