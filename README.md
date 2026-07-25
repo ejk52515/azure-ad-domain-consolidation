@@ -1,5 +1,7 @@
 # Azure Cross-Forest Active Directory Consolidation and Hybrid Entra ID Lab
 
+Loom link: https://www.loom.com/share/0c0c780611614999a79d6e7770d9aa4c
+
 > **Project status:** Technical implementation, validation, evidence collection, and Part 5 recording are complete. Final Azure teardown is intentionally pending until the repository and README are committed.
 
 This project models an enterprise-pattern acquisition and directory-consolidation scenario in Microsoft Azure. I built separate source and target Active Directory forests, established the network and trust dependencies between them, migrated a controlled pilot with ADMT and Password Export Server, transitioned access with an AGDLP-style model, and synchronized the migrated users from the target forest to Microsoft Entra ID.
